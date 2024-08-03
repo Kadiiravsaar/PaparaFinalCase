@@ -29,7 +29,7 @@ namespace Papara.Repository.Context
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			base.OnModelCreating(modelBuilder); // olmasa ne olur ne işe yarar
+			base.OnModelCreating(modelBuilder); 
 
 			modelBuilder.ApplyConfiguration(new AppUserConfiguration());
 			modelBuilder.ApplyConfiguration(new BasketConfiguration());
