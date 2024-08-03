@@ -7,7 +7,7 @@
 
 		public decimal TotalPrice { get; set; } // Sepetteki tüm ürünlerin toplam tutarı
 
-		// ödeme buraya gelebilir
 		public virtual ICollection<BasketItem> Items { get; set; } = new List<BasketItem>();
+		
 	}
 }

@@ -19,13 +19,11 @@ namespace Papara.Core.Models
 
 
 		// Kullanıcının dijital cüzdanındaki para miktarı
-		public decimal DigitalWalletBalance { get; set; } = 0;
+		public decimal DigitalWalletBalance { get; set; }
 
-		// Kullanıcının biriktirdiği puan miktarı
-		public decimal PointsBalance { get; set; } = 0;
+		//// Kullanıcının biriktirdiği puan miktarı
+		public decimal PointsBalance { get; set; }
 
-		//// Kullanıcının durumu (aktif, pasif vs.)
-		//public UserStatus Status { get; set; }
 
 		// Kullanıcının siparişleriyle ilgili koleksiyon
 		public virtual ICollection<Order> Orders { get; set; }
