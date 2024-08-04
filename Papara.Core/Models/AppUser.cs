@@ -18,13 +18,6 @@ namespace Papara.Core.Models
 		public DateTime CreatedDate { get; set; }
 
 
-		// Kullanıcının dijital cüzdanındaki para miktarı
-		public decimal DigitalWalletBalance { get; set; }
-
-		//// Kullanıcının biriktirdiği puan miktarı
-		public decimal PointsBalance { get; set; }
-
-
 		// Kullanıcının siparişleriyle ilgili koleksiyon
 		public virtual ICollection<Order> Orders { get; set; }
 
