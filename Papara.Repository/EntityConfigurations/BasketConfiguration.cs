@@ -22,6 +22,11 @@ namespace Papara.Repository.EntityConfigurations
 			builder.Property(o => o.TotalPrice).IsRequired().HasColumnType("decimal(18,2)");
 
 
+			builder.HasOne(b => b.Coupon)
+				   .WithMany(c => c.Baskets)
+				   .HasForeignKey(b => b.CouponId)
+				   .IsRequired(false)  // Kupon ID isteğe bağlıdır
+				   .OnDelete(DeleteBehavior.SetNull);  // Kupon silindiğinde sepet üzerindeki referans null'a ayarlanmalı
 
 
 			builder.HasOne(b => b.User)

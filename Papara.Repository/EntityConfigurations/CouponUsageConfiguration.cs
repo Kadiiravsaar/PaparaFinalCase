@@ -16,7 +16,7 @@ namespace Papara.Repository.EntityConfigurations
 
 			builder.Property(cu => cu.CouponId).IsRequired();
 			builder.Property(cu => cu.UserId).IsRequired();
-			builder.Property(cu => cu.UsedDate).IsRequired();
+			builder.Property(cu => cu.BasketId).IsRequired();
 
 			builder.HasOne(cu => cu.Coupon)
 				.WithMany(c => c.Usages)
@@ -26,6 +26,11 @@ namespace Papara.Repository.EntityConfigurations
 			builder.HasOne(cu => cu.User)
 				.WithMany()
 				.HasForeignKey(cu => cu.UserId)
+				.OnDelete(DeleteBehavior.Restrict);
+
+			builder.HasOne(cu => cu.Basket)
+				.WithMany()
+				.HasForeignKey(cu => cu.BasketId)
 				.OnDelete(DeleteBehavior.Restrict);
 		}
 	}

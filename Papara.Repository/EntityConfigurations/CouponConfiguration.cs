@@ -10,7 +10,7 @@ namespace Papara.Repository.EntityConfigurations
 		{
 
 			builder.Property(c => c.IsActive).HasDefaultValue(true);
-			builder.Property(c => c.CreatedDate).IsRequired(true);
+			builder.Property(c => c.CreatedDate).IsRequired();
 			builder.Property(c => c.UpdatedDate).IsRequired(false);
 			builder.Property(c => c.DeletedDate).IsRequired(false);
 
@@ -22,10 +22,10 @@ namespace Papara.Repository.EntityConfigurations
 
 
 
-			builder.HasMany(c => c.Orders)
-				   .WithOne(o => o.Coupon)
-				   .HasForeignKey(o => o.CouponId)
-				   .OnDelete(DeleteBehavior.SetNull); // Kupon silindiğinde sipariş üzerindeki referans null'a ayarlanmalı
+			builder.HasMany(c => c.Baskets)
+				   .WithOne(b => b.Coupon)
+				   .HasForeignKey(b => b.CouponId)
+				   .OnDelete(DeleteBehavior.SetNull); // Kupon silindiğinde Basket üzerindeki referans null'a ayarlanır
 
 			builder.HasMany(c => c.Usages)
 				   .WithOne(u => u.Coupon)

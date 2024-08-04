@@ -12,18 +12,6 @@ namespace Papara.Repository.EntityConfigurations
 			builder.Property(u => u.LastName).IsRequired().HasMaxLength(50);
 
 
-
-			builder.Property(u => u.DigitalWalletBalance)
-				.IsRequired()
-				.HasColumnType("decimal(18,2)")
-				.HasDefaultValue(0);  // Varsayılan değeri 0 olarak ayarla
-
-			builder.Property(u => u.PointsBalance)
-				.IsRequired()
-				.HasColumnType("decimal(18,2)")
-				.HasDefaultValue(0);  // Varsayılan değeri 0 olarak ayarla
-
-
 			builder.HasOne(u => u.Basket)
 				.WithOne(b => b.User)
 				.HasForeignKey<Basket>(b => b.UserId)
