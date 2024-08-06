@@ -12,10 +12,10 @@ namespace Papara.Repository.EntityConfigurations
 			builder.Property(u => u.LastName).IsRequired().HasMaxLength(50);
 
 
-			builder.HasOne(u => u.Basket)
-				.WithOne(b => b.User)
-				.HasForeignKey<Basket>(b => b.UserId)
-				.OnDelete(DeleteBehavior.Restrict);  
+			builder.HasMany(u => u.Baskets)  // Kullanıcı ve sepet arasında bir-çok ilişki tanımlandı.
+		  .WithOne(b => b.User)
+		  .HasForeignKey(b => b.UserId)
+		  .OnDelete(DeleteBehavior.Restrict);
 
 			builder.HasOne(u => u.DigitalWallet)
 				.WithOne(dw => dw.User)

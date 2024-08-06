@@ -30,9 +30,9 @@ namespace Papara.Repository.EntityConfigurations
 
 
 			builder.HasOne(b => b.User)
-					   .WithOne(u => u.Basket)
-					   .HasForeignKey<Basket>(b => b.UserId)
-					   .OnDelete(DeleteBehavior.Restrict); 
+				  .WithMany(u => u.Baskets)  // Çoktan bire ilişki tanımlandı.
+				  .HasForeignKey(b => b.UserId)
+				  .OnDelete(DeleteBehavior.Restrict);
 
 			builder.HasMany(b => b.Items)
 				.WithOne(b => b.Basket)

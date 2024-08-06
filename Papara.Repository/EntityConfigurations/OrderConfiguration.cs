@@ -13,17 +13,16 @@ namespace Papara.Repository.EntityConfigurations
 			builder.Property(o => o.UpdatedDate).IsRequired(false);
 			builder.Property(o => o.DeletedDate).IsRequired(false);
 
-			builder.Property(o => o.UserId).IsRequired();
 			builder.Property(o => o.OrderNumber).IsRequired().HasMaxLength(9);
 
 			builder.Property(o => o.TotalAmount).IsRequired().HasColumnType("decimal(18,2)");
 			builder.Property(o => o.PointUsed).IsRequired(false).HasColumnType("decimal(18,2)");
 
 
-			builder.HasOne(o => o.User)
-				.WithMany()
-				.HasForeignKey(o => o.UserId)
-				.OnDelete(DeleteBehavior.Restrict);
+			//builder.HasOne(o => o.AppUser)
+			//	.WithMany()
+			//	.HasForeignKey(o => o.UserId)
+			//	.OnDelete(DeleteBehavior.Restrict);
 
 
 			builder.HasMany(o => o.OrderDetails)
