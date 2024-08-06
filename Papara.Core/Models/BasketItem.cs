@@ -7,5 +7,7 @@
 		public virtual Product Product { get; set; }		
 		public virtual Basket Basket { get; set; }
 		public int Quantity { get; set; }
+
+		public decimal PointsEarned { get; set; } // Kazanılan puanlar için yeni özellik
 	}
 }

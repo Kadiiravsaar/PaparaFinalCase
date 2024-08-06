@@ -11,6 +11,6 @@ namespace Papara.Core.DTOs.Request
 	{
 		public int ProductId { get; set; }
 		public int Stock { get; set; }
-		public DateTime UpdatedAt { get; set; }
+		//public DateTime UpdatedAt { get; set; }
 	}
 }

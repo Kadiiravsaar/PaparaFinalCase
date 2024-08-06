@@ -22,7 +22,8 @@ namespace Papara.Core.Models
 		public virtual ICollection<Order> Orders { get; set; }
 
 		// Kullanıcının alışveriş sepeti
-		public virtual Basket Basket { get; set; }
+		public virtual ICollection<Basket> Baskets { get; set; }
+
 		// kullanıcının yalnızca bir aktif alışveriş sepetine sahip olabileceği anlamına gelir.
 
 		// Kullanıcının dijital cüzdanı (para ve puan işlemleri için)

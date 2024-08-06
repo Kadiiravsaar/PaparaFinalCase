@@ -8,7 +8,8 @@
 		public decimal TotalPrice { get; set; } // Sepetteki tüm ürünlerin toplam tutarı
 		public decimal FinalPrice { get; set; } // İndirim sonrası fiyat
 		public decimal? DiscountAmount { get; set; } // İndirim sonrası fiyat
-		
+		public decimal? PointUsed { get; set; }
+
 		public int? CouponId { get; set; }
 		public virtual Coupon Coupon { get; set; } // İlişkili kupon, kullanıcı sepete kupon uygulamışsa
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Papara.Core.DTOs.Request
 {
-	public class BaseRequestDTO
+	public abstract class BaseRequestDTO
 	{
 	}
 
