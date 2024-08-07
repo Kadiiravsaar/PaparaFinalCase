@@ -25,12 +25,7 @@ namespace Papara.Repository.EntityConfigurations
 				.HasForeignKey(pc => pc.ProductId)
 				.OnDelete(DeleteBehavior.Restrict);
 
-
-
-			builder.HasOne(p => p.ProductStock)
-			  .WithOne(s => s.Product)
-			  .HasForeignKey<Stock>(s => s.ProductId)
-			  .IsRequired();
+			
 		}
 	}
 
