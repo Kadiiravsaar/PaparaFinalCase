@@ -9,9 +9,6 @@ namespace Papara.Core.Models
 {
 	public class AppUser : IdentityUser
 	{
-		public string? RefreshToken { get; set; }
-		public DateTime? RefreshTokenExpiryTime { get; set; }
-
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
 
