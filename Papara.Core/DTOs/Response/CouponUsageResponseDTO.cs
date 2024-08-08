@@ -19,5 +19,6 @@
 		// Ekstra detaylar
 		public CouponResponseDTO Coupon { get; set; }
 		public AppUserResponseDTO User { get; set; }
+		public BasketResponseDTO Basket { get; set; }
 	}
 }

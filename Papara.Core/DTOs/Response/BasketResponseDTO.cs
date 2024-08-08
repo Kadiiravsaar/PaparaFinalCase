@@ -13,7 +13,8 @@
 		public decimal TotalAmount { get; set; } // Sepetteki tüm ürünlerin toplam tutarı
 		public decimal DiscountAmount { get; set; } // Uygulanan indirim miktarı
 		public decimal FinalPrice { get; set; } // İndirim sonrası fiyat
-		public decimal? PointUsed { get; set; }
+		public decimal? PointsEarned { get; set; } // Bu siparişten kazanılacak puan
+		//public decimal? PointUsed { get; set; } // Önceki siparişlerden kullanılacak puanlar
 
 		public List<BasketItemResponseDTO> Items { get; set; }
 	}

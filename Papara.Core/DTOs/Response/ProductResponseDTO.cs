@@ -22,7 +22,7 @@
 		public decimal MaxPoints { get; set; }
         public  int Stock { get; set; }
 
-        public List<CategoryResponseDTO>? Categories { get; set; }
+		public List<CategoryResponseDTO>? Categories { get; set; }
 
 
 		//public List<ProductCategoryResponseDTO> ProductCategories { get; set; }

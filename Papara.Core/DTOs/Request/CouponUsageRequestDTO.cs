@@ -8,7 +8,7 @@ namespace Papara.Core.DTOs.Request
 		public string UserId { get; set; }
 		public int BasketId { get; set; }
 		public DateTime UsedDate { get; set; }
-	}
+	}	
 
 
 }

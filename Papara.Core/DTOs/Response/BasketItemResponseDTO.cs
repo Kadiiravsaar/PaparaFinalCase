@@ -7,6 +7,8 @@
 		public string ProductName { get; set; }
 		public decimal Price { get; set; }
 		public decimal PointsEarned { get; set; } // Kazanılan puanlar için yeni özellik
+		public decimal PointsPercentage { get; set; } // Kazanılan puanlar için yeni özellik
+		public decimal MaxPoint { get; set; } // Kazanılan puanlar için yeni özellik
 
 
 	}
