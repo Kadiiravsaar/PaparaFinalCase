@@ -12,6 +12,6 @@ namespace Papara.Core.Models
 		public string Url { get; set; }
 		public string Tags { get; set; }
 
-		public virtual ICollection<ProductCategory> ProductCategories { get; set; }
+		public virtual ICollection<ProductCategory>? ProductCategories { get; set; }
 	}
 }
