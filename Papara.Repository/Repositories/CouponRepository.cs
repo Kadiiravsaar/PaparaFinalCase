@@ -14,6 +14,10 @@ namespace Papara.Repository.Repositories
 			_context = context;
 		}
 
+		public async Task<Coupon> GetCouponByCodeAsync(string couponCode)
+		{
+			return await _context.Coupons.FirstOrDefaultAsync(c => c.CouponCode == couponCode);
+		}
 		public async Task<Coupon> GetCouponAsync(Expression<Func<Coupon, bool>> predicate)
 		{
 			return await _context.Coupons
