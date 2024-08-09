@@ -7,6 +7,8 @@ namespace Papara.Core.Repositories
 	public interface ICouponRepository : IGenericRepository<Coupon>
 	{
 		Task<Coupon> GetCouponAsync(Expression<Func<Coupon, bool>> predicate);
-		
+		Task<Coupon> GetCouponByCodeAsync(string couponCode);
+
+
 	}
 }

@@ -32,8 +32,6 @@ namespace Papara.Core.Repositories
 
 		Task<TEntity> AddAsync(TEntity entity);
 
-		Task<List<TEntity>> AddRangeAsync(List<TEntity> entity);
-
 		Task<TEntity> UpdateAsync(TEntity entity);
 	
 		Task SoftDeleteAsync(int id);
