@@ -11,6 +11,6 @@
 		public int Stock { get; set; }
 
 
-		public virtual ICollection<ProductCategory> ProductCategories { get; set; }
+		public virtual ICollection<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
 	}
 }

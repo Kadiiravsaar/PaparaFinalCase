@@ -13,7 +13,7 @@ namespace Papara.Core.Models
 		public string LastName { get; set; }
 
 		public DateTime CreatedDate { get; set; }
-
+		public bool IsActive { get; set; } 
 
 		// Kullanıcının siparişleriyle ilgili koleksiyon
 		public virtual ICollection<Order> Orders { get; set; }
