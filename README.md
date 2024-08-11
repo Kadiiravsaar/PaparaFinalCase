@@ -42,6 +42,9 @@ Ensure you have the following installed on your local machine:
 - **.NET Core SDK**: For building and running the backend.
 - **MS SQL Server**: For the database.
 
+- **Hangfire Setup**
+To use Hangfire in the project, you need to manually create the necessary tables in the database.
+Ensure that the database specified in the **appsettings.json** file is correctly set up and accessible.
 
 ### Installation
 1. Clone the repository:
