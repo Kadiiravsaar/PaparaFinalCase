@@ -34,7 +34,6 @@ with features that enhance the overall shopping experience.
 - **API Documentation**: [Postman Documentation](https://documenter.getpostman.com/view/26479579/2sA3s3JX5A)
 - **API Testing**: Use Postman or Swagger for API documentation and testing.
 
-
 ## Getting Started
 
 ### Prerequisites
@@ -130,5 +129,64 @@ For questions or feedback, please contact [kadiiravsar@gmail.com](mailto:kadiira
 
 Thank you for exploring Papara Final Case!
 
+## Screenshots
 
+Here are some screenshots that illustrate the API requests.
+
+**If you make requests as shown below, you can quickly test the functionality.**
+
+
+- **POST** `/api/Categories` (Roles = "Admin")
+
+![KullaniciKayit](https://github.com/user-attachments/assets/524267b8-8d3d-4373-a68c-2c9d735d84dd)
+
+- **POST** `/api/Products` (Roles = "Admin")
+
+![AdminUrunEklemek](https://github.com/user-attachments/assets/c4c268c7-e208-4a49-b1ea-fe0d468db753)
+
+- **POST** `/api/Coupons` (Roles = "Admin")
+
+![AdminKuponEklemek](https://github.com/user-attachments/assets/b2be22ce-87ea-4155-b169-58663af193a7)
+
+- **POST** `/api/Auth/register`
+
+![KullaniciKayit](https://github.com/user-attachments/assets/89a518d3-c69e-46b2-8b78-fc3373b6bc8c)
+
+- **POST** `/api/Auth/login` (User)
+
+![KullaniciGiris](https://github.com/user-attachments/assets/2e418b3a-fc43-4041-9e63-54542c300a83)
+
+- **POST** `/api/DigitalWallets` (User)
+
+![KullaniciHesapCüzdani](https://github.com/user-attachments/assets/af57d2d8-1993-4536-9de1-80772f808575)
+
+- **POST** `/api/Payments/process` (User)
+
+![KullaniciHesapCuzdaninaBakiyeEklemekFake](https://github.com/user-attachments/assets/996c24c9-4d76-422d-845b-67e1d452cfb3)
+
+- **POST** `/api/BasketItems` (User)
+
+![KullaniciSepeteUrunEklemek](https://github.com/user-attachments/assets/9297884d-b880-4011-b37d-ba6e016f74bb)
+
+- **POST** `/api/Baskets/calculatePrice` (User)
+
+![KullaniciKuponKodKullanmadan](https://github.com/user-attachments/assets/14a55908-6d04-4efb-aa1a-293f4194c1fe)
+
+- **POST** `/api/Baskets/calculatePrice` (User)-Applied coupon code `SAVE40`
+
+![KullaniciSepeteKuponUygularsaHesaplanan](https://github.com/user-attachments/assets/0fe23e4f-4580-49a6-9a03-7dcb18382914)
+
+- **POST** `/api/Orders` (User) 
+  
+![KullaniciSiparişVerme](https://github.com/user-attachments/assets/a841c302-3374-433a-a2f3-f25ca86cc3f2)
+
+- **POST** `/api/Orders` (User) - Coupon applied order
+  
+![KullaniciSepeteKuponUyguladiktanSonrakiSipariş](https://github.com/user-attachments/assets/6ef63b2b-76fe-472f-ad95-9438201bf850)
+
+-**Order** confirmation emai
+
+![SiparisOnayMaili](https://github.com/user-attachments/assets/ff136e66-2402-4844-8201-b64e7dd296a7)
+
+**For more details, please refer to the documentation.**
 
