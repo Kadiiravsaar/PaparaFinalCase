@@ -136,6 +136,13 @@ Here are some screenshots that illustrate the API requests.
 
 **If you make requests as shown below, you can quickly test the functionality.**
 
+- **Token usage**
+  
+![token1](https://github.com/user-attachments/assets/1be4f304-8bfe-4f19-8e34-00ef740bba39)
+
+
+![token2](https://github.com/user-attachments/assets/20db1525-3633-4a6b-9bcc-1470e839f153)
+
 
 - **POST** `/api/Categories` (Roles = "Admin")
 
