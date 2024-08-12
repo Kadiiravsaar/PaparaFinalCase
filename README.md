@@ -129,5 +129,5 @@ For questions or feedback, please contact [kadiiravsar@gmail.com](mailto:kadiira
 
 Thank you for exploring Papara Final Case!
 
-## Screenshots
+
 
