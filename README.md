@@ -27,6 +27,7 @@ with features that enhance the overall shopping experience.
 - **Dependency Injection**: Autofac
 - **Validation**: FluentValidation
 - **Containerization**: Docker
+- **SMTP**: Email service for notifications.
 
 ## Development & Testing:
 
