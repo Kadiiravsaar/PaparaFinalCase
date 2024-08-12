@@ -15,7 +15,6 @@ using Papara.Service.Rules;
 using Papara.Service.Services.Abstract;
 using Papara.Service.Utilities;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Papara.Service.Services.Concrete
 {
@@ -57,7 +56,7 @@ namespace Papara.Service.Services.Concrete
 				withDeleted);
 
 			if (order == null)
-				return CustomResponseDto<OrderWithDetailResponseDTO?>.Fail(404, "Order not found");
+				return CustomResponseDto<OrderWithDetailResponseDTO?>.Fail(404, Messages.OrderNotFound);
 
 			var dto = _mapper.Map<OrderWithDetailResponseDTO>(order);
 			return CustomResponseDto<OrderWithDetailResponseDTO?>.Success(200, dto);
@@ -109,7 +108,8 @@ namespace Papara.Service.Services.Concrete
 			{
 				var product = await _productService.GetAsync(p => p.Id == item.ProductId);
 				if (product.Data.Stock < item.Quantity)
-					return CustomResponseDto<OrderResponseDTO>.Fail(400, "Not enough stock for product: " + product.Data.Name);
+					return CustomResponseDto<OrderResponseDTO>.Fail(400, Messages.NotEnoughStockAvailable);
+
 
 				// Stoktan düş
 				product.Data.Stock -= item.Quantity;
@@ -177,33 +177,12 @@ namespace Papara.Service.Services.Concrete
 
 		public void SendEmail(string email, string name, OrderResponseDTO orderDto)
 		{
-
-			var htmlContent = $@"
-					<html>
-					<head>
-						<style>
-							table {{
-								width: 100%;
-								border-collapse: collapse;
-							}}
-							table, th, td {{
-								border: 1px solid black;
-							}}
-							th, td {{
-								padding: 8px;
-								text-align: left;
-							}}
-						</style>
-					</head>
-					<body>
-						<h1>Sipariş Onayı</h1>
-						<p>Merhaba {name},</p>
-						<p>Sipariş Numaranız: <strong>{orderDto.OrderNumber}</strong></p>
-						<p>Toplam Tutar: <strong>{orderDto.TotalAmount} TL</strong></p>
-						<p>Kullanılan Puan: <strong>{orderDto.PointUsed}</strong></p>
-						<p>Sipariş Tarihi: <strong>{DateTime.Now:yyyy-MM-dd}</strong></p>
-					</body>
-					</html>";
+			var htmlContent = EmailTemplates.OrderConfirmationTemplate
+				   .Replace("{{name}}", name)
+				   .Replace("{{orderNumber}}", orderDto.OrderNumber)
+				   .Replace("{{totalAmount}}", orderDto.TotalAmount.ToString())
+				   .Replace("{{pointUsed}}", orderDto.PointUsed.ToString())
+				   .Replace("{{orderDate}}", DateTime.Now.ToString("yyyy-MM-dd"));
 
 			var message = JsonConvert.SerializeObject(new
 			{
