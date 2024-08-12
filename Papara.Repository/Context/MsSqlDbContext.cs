@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Papara.Core.Models;
 using Papara.Repository.EntityConfigurations;
 using Papara.Repository.Repositories;
@@ -27,7 +28,12 @@ namespace Papara.Repository.Context
 		public DbSet<Coupon> Coupons { get; set; }
 		public DbSet<CouponUsage> CouponUsages { get; set; }
 		public DbSet<DigitalWallet> DigitalWallets { get; set; }
-		public DbSet<Stock> Stocks { get; set; }
+
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+			optionsBuilder
+				.ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.NavigationBaseIncludeIgnored));
+		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
@@ -44,7 +50,6 @@ namespace Papara.Repository.Context
 			modelBuilder.ApplyConfiguration(new CouponUsageConfiguration());
 			modelBuilder.ApplyConfiguration(new DigitalWalletConfiguration());
 			modelBuilder.ApplyConfiguration(new ProductCategoryConfiguration());
-			modelBuilder.ApplyConfiguration(new StockConfiguration());
 
 			#region Seed-Data
 			modelBuilder.Entity<AppRole>().HasData(
@@ -62,8 +67,8 @@ namespace Papara.Repository.Context
 					Id = "4873b151-f87b-43f1-b1f4-892864c21c45",
 					UserName = "admin",
 					NormalizedUserName = "ADMIN",
-					Email = "a@gmail.com",
-					NormalizedEmail = "A@GMAIL.COM",
+					Email = "admin@gmail.com",
+					NormalizedEmail = "ADMIN@GMAIL.COM",
 					EmailConfirmed = true,
 					PasswordHash = hasher.HashPassword(null, "asd123"),
 					SecurityStamp = string.Empty,
@@ -77,8 +82,8 @@ namespace Papara.Repository.Context
 					Id = "5c27148d-4a49-491c-8ef2-ec0ad4e8f13f",
 					UserName = "user",
 					NormalizedUserName = "USER",
-					Email = "u@gmail.com",
-					NormalizedEmail = "U@GMAIL.COM",
+					Email = "user@gmail.com",
+					NormalizedEmail = "USER@GMAIL.COM",
 					EmailConfirmed = true,
 					PasswordHash = hasher.HashPassword(null, "asd123"),
 					SecurityStamp = string.Empty,
@@ -88,53 +93,7 @@ namespace Papara.Repository.Context
 
 				});
 
-			modelBuilder.Entity<Product>().HasData(
-			new Product
-			{
-				Id = 1,
-				Name = "Bluetooth Kulaklık",
-				Description = "Yüksek kaliteli ses deneyimi sunan kablosuz kulaklık.",
-				Price = 300.00m,
-				PointsPercentage = 2.5m,
-				MaxPoint = 15m
-			},
-			new Product
-			{
-				Id = 2,
-				Name = "Akıllı Saat",
-				Description = "Sağlık ve fitness takibi yapabilen akıllı saat.",
-				Price = 500.00m,
-				PointsPercentage = 3.0m,
-				MaxPoint = 20m
-			},
-			new Product
-			{
-				Id = 3,
-				Name = "E-Kitap Okuyucu",
-				Description = "Göz yormayan ekranı ile uzun süreli okuma için e-kitap okuyucu.",
-				Price = 250m,
-				PointsPercentage = 1.0m,
-				MaxPoint = 10m
-			},
-			new Product
-			{
-				Id = 4,
-				Name = "Kablosuz Şarj Cihazı",
-				Description = "Çeşitli cihazlar için uyumlu hızlı kablosuz şarj cihazı.",
-				Price = 150m,
-				PointsPercentage = 1.5m,
-				MaxPoint = 5m
-			},
-			new Product
-			{
-				Id = 5,
-				Name = "Akıllı Lamba",
-				Description = "Uzaktan kontrol edilebilen ve renk değiştirebilen LED akıllı lamba.",
-				Price = 90m,
-				PointsPercentage = 2.0m,
-				MaxPoint = 7m
-			}
-		);
+			
 			#endregion
 
 		}

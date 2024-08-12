@@ -23,7 +23,7 @@ namespace Papara.Repository.EntityConfigurations
 			builder.HasMany(p => p.ProductCategories)
 				.WithOne(pc => pc.Product)
 				.HasForeignKey(pc => pc.ProductId)
-				.OnDelete(DeleteBehavior.Restrict);
+				.OnDelete(DeleteBehavior.Cascade);
 
 			
 		}

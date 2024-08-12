@@ -1,15 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore.Query;
-using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
-using Papara.Core.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using Papara.Core.Models;
+using Papara.Core.Repositories;
 using Papara.Repository.Context;
+using System.Linq.Expressions;
 
 namespace Papara.Repository.Repositories
 {
 	public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
 	{
-		private readonly MsSqlDbContext _context;
+		protected readonly MsSqlDbContext _context;
 
 		public GenericRepository(MsSqlDbContext context)
 		{
@@ -19,22 +19,19 @@ namespace Papara.Repository.Repositories
 		public async Task<TEntity> AddAsync(TEntity entity)
 		{
 			if (entity == null)
-			{
 				throw new ArgumentNullException(nameof(entity), "Provided entity must not be null.");
-			}
-			entity.CreatedDate = DateTime.UtcNow;
 
+			entity.CreatedDate = DateTime.UtcNow.AddHours(3);
 			await _context.Set<TEntity>().AddAsync(entity);
-			await _context.SaveChangesAsync();
+			//await _context.SaveChangesAsync();
 			return entity;
 		}
 
 
 		public async Task<TEntity> UpdateAsync(TEntity entity)
 		{
-			entity.UpdatedDate = DateTime.UtcNow;
+			entity.UpdatedDate = DateTime.UtcNow.AddHours(3);
 			_context.Update(entity);
-			await _context.SaveChangesAsync();
 			return entity;
 		}
 		public async Task SoftDeleteAsync(int id)
@@ -43,7 +40,10 @@ namespace Papara.Repository.Repositories
 			if (entityId != null)
 			{
 				entityId.IsActive = false;
+				entityId.DeletedDate = DateTime.UtcNow.AddHours(3);
+
 				_context.Update(entityId);
+				//await _context.SaveChangesAsync();
 			}
 		}
 
@@ -52,24 +52,7 @@ namespace Papara.Repository.Repositories
 			TEntity entityId = await GetAsync(x => x.Id == id);
 			if (entityId != null)
 				_context.Remove(entityId);
-		}
 
-		public async Task<IList<TEntity>> DeleteRangeAsync(IList<TEntity> entities, bool forceDelete = false)
-		{
-			if (forceDelete == false)
-			{
-				foreach (TEntity entity in entities)
-				{
-					entity.IsActive = false;
-					entity.DeletedDate = DateTime.UtcNow;
-					_context.Update(entity);
-				}
-			}
-			else
-				_context.RemoveRange(entities);
-
-			await _context.SaveChangesAsync();
-			return null;
 		}
 
 		public async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool withDeleted = false)

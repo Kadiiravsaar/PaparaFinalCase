@@ -20,6 +20,7 @@ namespace Papara.Repository.EntityConfigurations
 			builder.Property(c => c.Amount).IsRequired().HasColumnType("decimal(18,2)");
 			builder.Property(c => c.ExpiryDate).IsRequired();
 
+			builder.HasIndex(c => c.CouponCode).IsUnique();
 
 
 			builder.HasMany(c => c.Baskets)

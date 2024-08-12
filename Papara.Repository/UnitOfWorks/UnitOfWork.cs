@@ -4,11 +4,10 @@ using Papara.Repository.Context;
 
 namespace Papara.Repository.UnitOfWorks
 {
-
+	
 	public class UnitOfWork : IUnitOfWork, IDisposable
 	{
 		private readonly MsSqlDbContext _context;
-
 		public UnitOfWork(MsSqlDbContext context)
 		{
 			_context = context;
