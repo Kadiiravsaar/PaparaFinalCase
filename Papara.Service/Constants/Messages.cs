@@ -23,7 +23,7 @@ namespace Papara.Service.Constants
 
 		public const string RegistrationSuccess = "Registration successful, please log in.";
 
-		public static string InvalidUsernameOrPassword = "Geçersiz kullanıcı adı veya şifre.";
+		public static string InvalidUsernameOrPassword = "Invalid username or password.";
 
 		public static string UserRoleNotExists = "User role does not exist.";
 
@@ -39,13 +39,11 @@ namespace Papara.Service.Constants
 
 		public const string BasketItemNotFound = "Basket Item Not Found";
 
-		public const string NotEnoughStockAvailable = "Not Enough Stock Available";
+		public static string NotEnoughStockAvailable = "Not Enough Stock Available";
 
 		public const string EmailAlreadyInUse = "Email already in use.";
 
 		public const string UserIdNotFoundInToken = "User ID not found in token.";
-
-		public const string CouponCannotBeDeleted = "Kupon başka bir kayıtla ilişkili olduğu için silinemez.";
 
 		public const string CouponCodeAlreadyExists = "Coupon code already exists.";
 
@@ -83,9 +81,11 @@ namespace Papara.Service.Constants
 
 		public const string UserAlreadyHasActiveBasket = "User already has an active basket.";
 
-		public static string CouponAlreadyHasBeen = "Bu kuponu daha önce kullandınız.";
+		public static string CouponAlreadyHasBeen = "You have already used this coupon.";
 
-		public static string CouponNotFound = "Kupon bulunamadı";
+		public static string CouponNotFound = "Coupon not found.";
+
+		public const string CouponCannotBeDeleted = "The coupon cannot be deleted as it is linked to another record.";
 
 		public static string FillAllFields = "All fields must be filled.";
 
