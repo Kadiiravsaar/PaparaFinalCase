@@ -25,6 +25,7 @@ with features that enhance the overall shopping experience.
 - **Caching**: Redis (StackExchangeRedis)
 - **Background Jobs**: Hangfire
 - **Dependency Injection**: Autofac
+- **AutoMapper**: A library used for Object-Object Mapping
 - **Validation**: FluentValidation
 - **Containerization**: Docker
 - **SMTP**: Email service for notifications.
