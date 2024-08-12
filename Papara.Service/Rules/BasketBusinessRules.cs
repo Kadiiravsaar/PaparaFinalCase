@@ -3,11 +3,6 @@ using Papara.Core.Models;
 using Papara.Service.Constants;
 using Papara.Service.Exceptions;
 using Papara.Service.Services.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Papara.Service.Rules
 {
@@ -22,30 +17,42 @@ namespace Papara.Service.Rules
 			_couponService = couponService;
 		}
 
-		public async Task<CustomResponseDto<bool>> CheckCouponUsageAsync(int couponId, string userId)
+
+		public async Task<CustomResponseDto<bool>> CheckCouponUsageByCodeAsync(string couponCode, string userId)
 		{
+			var coupon = await _couponService.FetchCouponByCriteriaAsync(c => c.CouponCode == couponCode);
+			if (coupon == null)
+				throw new ClientSideException(Messages.CouponNotFound);
+
 			var couponUsageCheck = await _couponUsageService.GetCouponUsageWithDetailAsync(
-				cu => cu.CouponId == couponId && cu.UserId == userId);
+				cu => cu.CouponId == coupon.Id && cu.UserId == userId);
 
-			if (couponUsageCheck.Data != null)
-			{
-				throw new BusinessException(Messages.CouponAlreadyHasBeen);
-			}
+			if (couponUsageCheck.Data == null)
+				return CustomResponseDto<bool>.Success(200);
 
-			return CustomResponseDto<bool>.Success(200);
+			throw new ClientSideException(Messages.CouponAlreadyHasBeen);
 		}
 
-		public async Task<CustomResponseDto<Coupon>> ValidateCouponAsync(int couponId)
+		public async Task<CustomResponseDto<Coupon>> ValidateCouponByIdAsync(int couponId)
 		{
-			var coupon = await _couponService.GetCouponAsync(
+			var coupon = await _couponService.FetchCouponByCriteriaAsync(
 				c => c.Id == couponId && c.ExpiryDate > DateTime.Now);
 
 			if (coupon == null)
-			{
-				return CustomResponseDto<Coupon>.Fail(404, "Geçersiz veya süresi dolmuş kupon.");
-			}
+				throw new ClientSideException(Messages.InvalidOrExpiredCoupon);
+			return CustomResponseDto<Coupon>.Success(200, coupon);
+		}
+
+		public async Task<CustomResponseDto<Coupon>> ValidateCouponByCodeAsync(string couponCode)
+		{
+			var coupon = await _couponService.FetchCouponByCriteriaAsync(
+				c => c.CouponCode == couponCode && c.ExpiryDate > DateTime.Now);
+
+			if (coupon == null)
+				return CustomResponseDto<Coupon>.Fail(404, Messages.InvalidOrExpiredCoupon);
 
 			return CustomResponseDto<Coupon>.Success(200, coupon);
 		}
+
 	}
 }

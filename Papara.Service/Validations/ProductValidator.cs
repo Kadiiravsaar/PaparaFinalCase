@@ -27,6 +27,11 @@ namespace Papara.Service.Validations
 				.GreaterThanOrEqualTo(0).WithMessage("Max points must be non-negative.")
 				.ScalePrecision(2, 18).WithMessage("Max points must be a decimal with up to 18 digits and 2 decimal places.");
 
+
+			RuleFor(p => p.CategoryIds)
+			.NotEmpty().WithMessage("At least one category must be selected.")
+			.Must(cids => cids.All(id => id > 0)).WithMessage("All category IDs must be greater than zero.");
+
 		}
 	}
 }

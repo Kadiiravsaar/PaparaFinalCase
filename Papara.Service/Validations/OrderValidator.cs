@@ -8,7 +8,7 @@ namespace Papara.Service.Validations
 	{
 		public OrderValidator()
 		{
-			RuleFor(o => o.OrderNumber)  // arkada kendisi oluşacak
+			RuleFor(o => o.OrderNumber) 
 				.NotEmpty().WithMessage("Order number is required.")
 				.Length(9).WithMessage("Order number must be exactly 9 characters.");
 

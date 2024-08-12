@@ -31,6 +31,13 @@ namespace Papara.Service.Rules
 				throw new BusinessException(Messages.InvalidUsernameOrPassword);
 			
 		}
+	
+		public Task EmailAddressShouldBeValid(AppUser? user)
+		{
+			if (user is null)
+				throw new BusinessException(Messages.EmailNotFound);
+			return Task.CompletedTask;
+		}
 
 		public async Task EnsureRoleExists(string roleName)
 		{

@@ -2,11 +2,6 @@
 using Papara.Core.Models;
 using Papara.Service.Constants;
 using Papara.Service.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Papara.Service.Rules
 {
@@ -18,12 +13,23 @@ namespace Papara.Service.Rules
 		{
 			_userManager = userManager;
 		}
-
+		public async Task CheckEmailAlreadyInUseAsync(string email)
+		{
+			var userExists = await _userManager.FindByEmailAsync(email);
+			if (userExists != null)
+				throw new ClientSideException(Messages.EmailAlreadyInUse); 
+		}
+		public async Task CheckEmailConflictAsync(string email, string userId)
+		{
+			var existingUser = await _userManager.FindByEmailAsync(email);
+			if (existingUser != null && existingUser.Id != userId)
+				throw new ClientSideException(Messages.EmailAlreadyInUse);
+		}
 		public async Task EnsureUserExistsAsync(string userId)
 		{
 			var user = await _userManager.FindByIdAsync(userId);
 			if (user == null)
-				throw new Exception(Messages.UserNotFound);
+				throw new ClientSideException(Messages.UserNotFound);
 		}
 
 		public void EnsureNotNull(object obj, string message)

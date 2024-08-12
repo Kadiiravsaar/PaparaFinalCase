@@ -22,9 +22,3 @@ namespace Papara.Service.Validations
 	}
 }
 
-//{
-//	"CouponId": 123,
-//  "UserId": "e1b2f4c-974e-488e-a0aa-a320627f804b",
-//  "UsedDate": "2024-08-05T14:00:00Z"
-//}
-

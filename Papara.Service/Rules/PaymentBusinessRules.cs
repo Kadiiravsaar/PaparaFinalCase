@@ -1,14 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Papara.Core.Models;
+using Papara.Repository.Context;
 using Papara.Service.Constants;
-using Papara.Service.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Papara.Service.Rules
 {
@@ -24,6 +20,19 @@ namespace Papara.Service.Rules
 			_httpContextAccessor = httpContextAccessor;
 		}
 
+
+		public async Task<AppUser> ValidateUserAndWalletAsync(string userId, UserManager<AppUser> userManager, MsSqlDbContext context)
+		{
+			var user = await userManager.FindByIdAsync(userId);
+			if (user == null)
+				throw new Exception(Messages.UserNotFound);
+
+			user = await context.Users.Include(u => u.DigitalWallet).FirstOrDefaultAsync(u => u.Id == userId);
+			if (user.DigitalWallet == null)
+				throw new Exception(Messages.UserDoesNotHaveDigitalWallet);
+
+			return user;
+		}
 
 		public async Task<string> GetUserIdFromTokenAsync()
 		{
