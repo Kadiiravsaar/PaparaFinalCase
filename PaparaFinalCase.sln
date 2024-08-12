@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Papara.API", "Papara.API\Papara.API.csproj", "{76B8CF35-A388-4B56-9E83-9FF0DCE7464F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Papara.API", "Papara.API\Papara.API.csproj", "{794228E2-7F65-462A-863F-B2C06FC46C56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Papara.Repository", "Papara.Repository\Papara.Repository.csproj", "{CE90E42A-048F-4D19-85E5-709CCC92BD37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Papara.Service", "Papara.Service\Papara.Service.csproj", "{CC4B0BE5-DF53-4FA6-AC98-C125E236638C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Papara.Core", "Papara.Core\Papara.Core.csproj", "{FE9D49A3-0E56-4B59-AAA4-B51650565658}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{76B8CF35-A388-4B56-9E83-9FF0DCE7464F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76B8CF35-A388-4B56-9E83-9FF0DCE7464F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76B8CF35-A388-4B56-9E83-9FF0DCE7464F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76B8CF35-A388-4B56-9E83-9FF0DCE7464F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{794228E2-7F65-462A-863F-B2C06FC46C56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{794228E2-7F65-462A-863F-B2C06FC46C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{794228E2-7F65-462A-863F-B2C06FC46C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{794228E2-7F65-462A-863F-B2C06FC46C56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE90E42A-048F-4D19-85E5-709CCC92BD37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE90E42A-048F-4D19-85E5-709CCC92BD37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE90E42A-048F-4D19-85E5-709CCC92BD37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE90E42A-048F-4D19-85E5-709CCC92BD37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC4B0BE5-DF53-4FA6-AC98-C125E236638C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4B0BE5-DF53-4FA6-AC98-C125E236638C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4B0BE5-DF53-4FA6-AC98-C125E236638C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4B0BE5-DF53-4FA6-AC98-C125E236638C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE9D49A3-0E56-4B59-AAA4-B51650565658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE9D49A3-0E56-4B59-AAA4-B51650565658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE9D49A3-0E56-4B59-AAA4-B51650565658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE9D49A3-0E56-4B59-AAA4-B51650565658}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
