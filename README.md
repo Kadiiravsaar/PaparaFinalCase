@@ -184,7 +184,7 @@ Here are some screenshots that illustrate the API requests.
   
 ![KullaniciSepeteKuponUyguladiktanSonrakiSipariş](https://github.com/user-attachments/assets/6ef63b2b-76fe-472f-ad95-9438201bf850)
 
--**Order** confirmation emai
+- **Order** confirmation email
 
 ![SiparisOnayMaili](https://github.com/user-attachments/assets/ff136e66-2402-4844-8201-b64e7dd296a7)
 
