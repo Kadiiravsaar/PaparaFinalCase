@@ -1,11 +1,15 @@
 ﻿using Autofac;
+using AutoMapper;
+using Hangfire;
 using Papara.Core.Repositories;
 using Papara.Core.UnitOfWorks;
 using Papara.Repository.Repositories;
 using Papara.Repository.UnitOfWorks;
+using Papara.Service.Mapping;
 using Papara.Service.Rules;
 using Papara.Service.Services.Abstract;
 using Papara.Service.Services.Concrete;
+using Papara.Service.Utilities;
 using Module = Autofac.Module;
 namespace Papara.API.Modules
 {
@@ -36,7 +40,6 @@ namespace Papara.API.Modules
 
 			// Ödeme Servisi
 			builder.RegisterType<PaymentService>().As<IPaymentService>().InstancePerLifetimeScope();
-			//builder.RegisterType<EmailService>().As<IEmailService>().InstancePerLifetimeScope();
 
 			// Sepet ve Sepet Öğeleri
 			builder.RegisterType<BasketRepository>().As<IBasketRepository>().InstancePerLifetimeScope();
@@ -79,6 +82,22 @@ namespace Papara.API.Modules
 			// Ürün Servisi
 			builder.RegisterType<ProductRepository>().As<IProductRepository>().InstancePerLifetimeScope();
 			builder.RegisterType<ProductService>().As<IProductService>().InstancePerLifetimeScope();
+
+
+
+			builder.RegisterType<RabbitMQPublisher>().AsSelf().SingleInstance();
+
+			// Email Job Service
+			builder.RegisterType<EmailJobService>().AsSelf().SingleInstance();
+
+			// Hangfire Server
+			builder.Register(context => new BackgroundJobServer()).AsSelf().SingleInstance();
+
+			// AutoMapper
+			builder.Register(context => new MapperConfiguration(cfg =>
+			{
+				cfg.AddProfile(new MapProfile());
+			}).CreateMapper()).As<IMapper>().InstancePerLifetimeScope();
 		}
 	}
 }

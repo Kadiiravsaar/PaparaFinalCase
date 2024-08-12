@@ -127,7 +127,6 @@ namespace Papara.API
 				options.InstanceName = redisConfiguration["InstanceName"];
 			});
 
-
 		
 
 			// Hangfire yapýlandýrmasý
@@ -146,19 +145,6 @@ namespace Papara.API
 				}));
 
 
-			//builder.Services.AddSingleton<EmailBackgroundService>();
-
-			builder.Services.AddSingleton<EmailJobService>();
-
-
-			builder.Services.AddSingleton<RabbitMQPublisher>();
-
-
-			builder.Services.AddHangfireServer();
-
-			builder.Services.AddAutoMapper(typeof(MapProfile));
-
-
 			builder.Host.UseServiceProviderFactory
 				(new AutofacServiceProviderFactory());
 			builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new AppModule()));
@@ -167,8 +153,9 @@ namespace Papara.API
 			builder.Services.AddHttpContextAccessor();
 
 
-
 			var app = builder.Build();
+			var emailJobService = app.Services.GetRequiredService<EmailJobService>();
+			Task.Run(() => emailJobService.ProcessEmailQueue());
 
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
