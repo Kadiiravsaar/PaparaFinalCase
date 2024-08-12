@@ -30,7 +30,8 @@ with features that enhance the overall shopping experience.
 
 ## Development & Testing:
 
-- **API Documentation**: Postman or Swagger
+- **API Documentation**: [Postman Documentation](https://documenter.getpostman.com/view/26479579/2sA3s3JX5A)
+- **API Testing**: Use Postman or Swagger for API documentation and testing.
 
 
 ## Getting Started
