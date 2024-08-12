@@ -14,7 +14,5 @@ namespace Papara.Core.Models
 		public DateTime? DeletedDate { get; set; }
 		public bool IsActive { get; set; } = true;
 
-
-
 	}
 }

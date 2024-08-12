@@ -6,8 +6,6 @@
 		public string Url { get; set; }
 		public string Tags { get; set; }
 
-		public List<int>? ProductIds { get; set; } // Category Id'leri içeren liste
-
 	}
 
 }

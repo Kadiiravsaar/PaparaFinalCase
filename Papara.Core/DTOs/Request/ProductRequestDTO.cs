@@ -8,6 +8,6 @@
 		public int Stock { get; set; }
 		public decimal PointsPercentage { get; set; }  // Üründen kazanılacak puan yüzdesi
 		public decimal MaxPoint { get; set; }         // Kazanılacak maksimum puan
-		public List<int>? CategoryIds { get; set; } // Category Id'leri içeren liste
+		public List<int> CategoryIds { get; set; } // Category Id'leri içeren liste
 	}
 }

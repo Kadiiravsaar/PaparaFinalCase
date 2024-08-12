@@ -10,4 +10,5 @@ namespace Papara.Core.DTOs.Request
 		public decimal TotalAmount { get; set; }
 		public decimal? PointUsed { get; set; }
 	}
+
 }

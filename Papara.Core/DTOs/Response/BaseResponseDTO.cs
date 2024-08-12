@@ -12,10 +12,4 @@ namespace Papara.Core.DTOs.Response
 		public int Id { get; set; }
 		public DateTime CreatedDate { get; set; }
 	}
-
-
-	public class NoContentDto
-	{
-
-	}
 }

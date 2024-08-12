@@ -9,5 +9,7 @@ namespace Papara.Core.Repositories
 {
 	public interface ICategoryRepository : IGenericRepository<Category>
 	{
+		Task<IEnumerable<int>> GetCategoryIdsAsync();
+		Task<bool> CategoryHasProducts(int categoryId);
 	}
 }

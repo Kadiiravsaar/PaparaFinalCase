@@ -7,7 +7,4 @@
 		public DateTime ExpiryDate { get; set; }
 		public decimal Amount { get; set; }
 	}
-
-
-
 }

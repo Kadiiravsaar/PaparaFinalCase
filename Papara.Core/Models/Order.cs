@@ -6,7 +6,7 @@
 		public AppUser User { get; set; }
 		public string OrderNumber { get; set; }
 		public decimal TotalAmount { get; set; }
-		public decimal? PointUsed { get; set; }// TODO kalkabilir
+		public decimal? PointUsed { get; set; }
 		public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 	}
 }

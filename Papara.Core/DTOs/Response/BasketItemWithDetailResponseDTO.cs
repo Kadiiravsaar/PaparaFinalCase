@@ -10,5 +10,4 @@
 		public string UserId { get; set; }  // Basket'e ait kullanıcı ID'si
 	}
 
-
 }

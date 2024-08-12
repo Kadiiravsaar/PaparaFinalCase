@@ -9,9 +9,5 @@
 		public decimal PointsEarned { get; set; } // Kazanılan puanlar için yeni özellik
 		public decimal PointsPercentage { get; set; } // Kazanılan puanlar için yeni özellik
 		public decimal MaxPoint { get; set; } // Kazanılan puanlar için yeni özellik
-
-
 	}
-
-
 }
